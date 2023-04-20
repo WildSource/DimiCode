@@ -11,7 +11,7 @@ import java.io.File;
 public class Lexer {
     private File file;
 
-    public Lexer(String fileName) throws Exception {
-        this.file = new File(fileName);
+    public Lexer(File file) throws Exception {
+        this.file = file;
     }
 }
