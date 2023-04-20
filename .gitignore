@@ -2,3 +2,5 @@ DimiCore.iml
 .idea
 /out
 test.dc
+*.iml
+*.dc
