@@ -26,10 +26,9 @@ public class Lexer {
     }
 
     private void verifyFileExtensions(File file) throws Exception {
-        if(file.getName().endsWith(".dc")) {
+        if (file.getName().endsWith(".dc")) {
             System.out.println("File type verified");
-        }
-        else {
+        } else {
             throw new Exception("Wrong file type since it does not end with \".dc\" ");
         }
 
