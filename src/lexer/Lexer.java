@@ -14,6 +14,7 @@ public class Lexer {
     public Lexer(String fileName) throws Exception {
         this.file = new File(fileName);
         verifyFileExist(this.file);
+        verifyFileExtensions(this.file);
     }
 
     private void verifyFileExist(File file) throws Exception {
@@ -22,5 +23,15 @@ public class Lexer {
         } else {
             System.out.println("File reference created");
         }
+    }
+
+    private void verifyFileExtensions(File file) throws Exception {
+        if(file.getName().endsWith(".dc")) {
+            System.out.println("File type verified");
+        }
+        else {
+            throw new Exception("Wrong file type since it does not end with \".dc\" ");
+        }
+
     }
 }
