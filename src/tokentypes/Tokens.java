@@ -8,5 +8,5 @@ package tokentypes;
  *
  */
 public enum Tokens {
-    OPERATOR, DATA, VARIABLE, KEYWORD, PUNCTUATION;
+    OPERATOR, INT, STRING, VARIABLE, KEYWORD, PUNCTUATION;
 }
