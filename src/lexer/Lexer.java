@@ -1,6 +1,9 @@
 package lexer;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author Samuel Nguyen-Phok
@@ -11,7 +14,38 @@ import java.io.File;
 public class Lexer {
     private File file;
 
-    public Lexer(File file) throws Exception {
+    private Scanner reader;
+
+    public Lexer(File pFile) throws Exception {
+        this.file = pFile;
+        this.reader = new Scanner(file);
+    }
+
+    public List<Token> readSingleLine() {
+        ArrayList<Token> tokenList = new ArrayList<Token>();
+        if (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            Scanner lineReader = new Scanner(line);
+            while (lineReader.hasNext()) {
+                tokenList.add(new Token(lineReader.next()));
+            }
+        }
+        return tokenList;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
         this.file = file;
+    }
+
+    public Scanner getReader() {
+        return reader;
+    }
+
+    public void setReader(Scanner reader) {
+        this.reader = reader;
     }
 }
