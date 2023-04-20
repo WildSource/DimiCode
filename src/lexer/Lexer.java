@@ -1,5 +1,7 @@
 package lexer;
 
+import java.io.File;
+
 /**
  * @author Samuel Nguyen-Phok
  * @version 0.0.1
@@ -8,4 +10,9 @@ package lexer;
  *
  */
 public class Lexer {
+    private File file;
+
+    public Lexer(String fileName) {
+        this.file = new File(fileName);
+    }
 }
