@@ -32,7 +32,10 @@ public class Token {
             switch (word) {
                 case "int", "string", "if", "while", "else" -> this.type = Tokens.KEYWORD;
                 case "+", "*", "-", "/", "=", "<", ">" -> this.type = Tokens.OPERATOR;
-                case "{", "}", "(", ")" -> this.type = Tokens.PUNCTUATION;
+                case "{" -> this.type = Tokens.BRACKETLEFT;
+                case "}" -> this.type = Tokens.BRACKETRIGHT;
+                case "(" -> this.type = Tokens.PARENTHESISLEFT;
+                case ")" -> this.type = Tokens.PARENTHESISRIGHT;
                 default -> this.type = Tokens.VARIABLE;
             }
         }

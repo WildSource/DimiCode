@@ -12,11 +12,6 @@ public class Main {
         for (Token token : list) {
             System.out.println(token.toString());
         }
-        System.out.println("");
-        list = lexer.readSingleLine();
-        for (Token token : list) {
-            System.out.println(token.toString());
-        }
         System.exit(0);
     }
 }
