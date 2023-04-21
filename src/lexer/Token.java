@@ -30,9 +30,9 @@ public class Token {
         // Check if the word is a keyword, operator, or punctuation
         else {
             switch (word) {
-                case "int", "string" -> this.type = Tokens.KEYWORD;
-                case "+", "*", "-", "/", "=" -> this.type = Tokens.OPERATOR;
-                case "{", "}" -> this.type = Tokens.PUNCTUATION;
+                case "int", "string", "if", "while", "else" -> this.type = Tokens.KEYWORD;
+                case "+", "*", "-", "/", "=", "<", ">" -> this.type = Tokens.OPERATOR;
+                case "{", "}", "(", ")" -> this.type = Tokens.PUNCTUATION;
                 default -> this.type = Tokens.VARIABLE;
             }
         }
