@@ -2,13 +2,16 @@ package lexer;
 
 import tokentypes.Tokens;
 
+import java.util.Collections;
+import java.util.Objects;
+
 /**
  * @author Samuel Nguyen-Phok
  * @version 0.0.1
  * <p>
  * This class represents the tokenized words
  */
-public class Token {
+public class Token implements Comparable<Token> {
     private String word;
 
     private Tokens type;
@@ -59,5 +62,22 @@ public class Token {
                 "word='" + word + '\'' +
                 ", type=" + type +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Token o) {
+        Objects.requireNonNull(o);
+
+        int compareValue = 0;
+
+        int thisParseOrder = this.type.getParseOrder();
+        int objectParseOrder = o.getType().getParseOrder();
+
+        if (thisParseOrder > objectParseOrder) {
+            compareValue = 1;
+        } else if (thisParseOrder < objectParseOrder) {
+            compareValue = -1;
+        }
+        return compareValue;
     }
 }
