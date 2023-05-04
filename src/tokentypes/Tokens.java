@@ -8,5 +8,15 @@ package tokentypes;
  *
  */
 public enum Tokens {
-    OPERATOR, INT, STRING, VARIABLE, KEYWORD;
+    OPERATOR(3), INT(2), STRING(2), VARIABLE(1), KEYWORD(0);
+
+    private final int parseOrder;
+
+    private Tokens(int parseOrder) {
+        this.parseOrder = parseOrder;
+    }
+
+    public int getParseOrder() {
+        return parseOrder;
+    }
 }
