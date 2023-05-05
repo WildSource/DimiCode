@@ -3,7 +3,6 @@ import interpreter.Interpreter;
 import lexer.Lexer;
 import lexer.Token;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
