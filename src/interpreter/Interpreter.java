@@ -3,6 +3,7 @@ package interpreter;
 import dataTypes.Variable;
 import lexer.Token;
 import tokentypes.Tokens;
+import utils.InterpreterUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,9 +12,12 @@ import java.util.List;
 public final class Interpreter {
     private static Interpreter instance;
 
+    private static InterpreterUtils utils;
+
     private static HashMap<String, Variable> memory;
 
     private Interpreter() {
+        utils = InterpreterUtils.getInstance();
         memory = new HashMap<>();
     }
 
@@ -77,46 +81,17 @@ public final class Interpreter {
     }
 
     private void createStringVar(List<Token> tokens) {
-        String varName = findVarName(tokens);
-        String value = findStringValue(tokens);
+        String varName = utils.findVarName(tokens);
+        String value = utils.findStringValue(tokens);
         allocateVariable(varName, createVariable(Tokens.STRING, value));
     }
 
     private void createIntVar(List<Token> tokens) {
-        String varName = findVarName(tokens);
-        int value = findIntValue(tokens);
+        String varName = utils.findVarName(tokens);
+        int value = utils.findIntValue(tokens);
         allocateVariable(varName, createVariable(Tokens.INT, value));
     }
 
-    private String findVarName(List<Token> list) {
-        String varName = "";
-        for (Token token : list) {
-            if (token.getType() == Tokens.VARIABLE) {
-                varName = token.getWord();
-            }
-        }
-        return varName;
-    }
-
-    private String findStringValue(List<Token> list) {
-        String value = "";
-        for (Token token : list) {
-            if (token.getType() == Tokens.STRING) {
-                value = token.getWord();
-            }
-        }
-        return value;
-    }
-
-    private int findIntValue(List<Token> list) {
-        int value = 0;
-        for (Token token : list) {
-            if (token.getType() == Tokens.STRING) {
-                value = Integer.parseInt(token.getWord());
-            }
-        }
-        return value;
-    }
 
     public static Interpreter getInstance() {
         if (instance == null) {
