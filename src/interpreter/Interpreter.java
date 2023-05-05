@@ -21,7 +21,7 @@ public final class Interpreter {
         memory = new HashMap<>();
     }
 
-    private void interpret(List<Token> tokens) {
+    public void interpret(List<Token> tokens) {
         Token varConditionAssign = new Token("=");
 
         if (tokens.contains(varConditionAssign)) {
@@ -83,7 +83,6 @@ public final class Interpreter {
         int value = utils.findIntValue(tokens);
         allocateVariable(varName, utils.createVariable(Tokens.INT, value));
     }
-
 
     public static Interpreter getInstance() {
         if (instance == null) {

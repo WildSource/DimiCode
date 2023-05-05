@@ -12,6 +12,7 @@ public class Main {
         Lexer lexer = new Lexer(fileIntegrityChecker.getFile());
         List<Token> list = lexer.readSingleLine();
         Interpreter interpreter = Interpreter.getInstance();
+        interpreter.interpret(list);
         System.exit(0);
     }
 }
