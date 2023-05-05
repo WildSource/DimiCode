@@ -1,4 +1,4 @@
-package FileIntegrityChecker;
+package fileIntegrityChecker;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-import FileIntegrityChecker.FileIntegrityChecker;
+import fileIntegrityChecker.FileIntegrityChecker;
 import lexer.Lexer;
 import lexer.Token;
 
