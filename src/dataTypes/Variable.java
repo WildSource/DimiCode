@@ -2,6 +2,12 @@ package dataTypes;
 
 import tokentypes.Tokens;
 
+/**
+ * @author Samuel Nguyen-Phok
+ * Representation of a variable of DimiCore.
+ * It can either be constructed as a string or int variable.
+ * The Interpreter reads the token type from Token and builds the object.
+ */
 public class Variable {
     private Tokens type;
     private String string;
