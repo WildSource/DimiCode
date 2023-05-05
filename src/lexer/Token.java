@@ -33,7 +33,9 @@ public class Token implements Comparable<Token> {
         // Check if the word is a keyword, operator, or punctuation
         else {
             switch (word) {
-                case "int", "string", "if", "while", "else" -> this.type = Tokens.KEYWORD;
+                case "string" -> this.type = Tokens.STRING;
+                case "int" -> this.type = Tokens.INT;
+                case "if", "while", "else" -> this.type = Tokens.KEYWORD;
                 case "+", "*", "-", "/", "=", "<", ">" -> this.type = Tokens.OPERATOR;
                 default -> this.type = Tokens.VARIABLE;
             }
