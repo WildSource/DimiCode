@@ -2,6 +2,7 @@ package lexer;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,6 +24,7 @@ public class Lexer {
 
     public List<Token> readSingleLine() {
         ArrayList<Token> tokenList = new ArrayList<Token>();
+
         if (reader.hasNextLine()) {
             String line = reader.nextLine();
             Scanner lineReader = new Scanner(line);
@@ -30,6 +32,8 @@ public class Lexer {
                 tokenList.add(new Token(lineReader.next()));
             }
         }
+
+        Collections.sort(tokenList);
         return tokenList;
     }
 
