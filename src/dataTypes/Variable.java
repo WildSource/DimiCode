@@ -3,7 +3,6 @@ package dataTypes;
 import tokentypes.Tokens;
 
 public class Variable {
-
     private Tokens type;
     private String string;
     private int integer;
@@ -37,9 +36,19 @@ public class Variable {
         this.integer = integer;
     }
 
-    public class VariableBuilder {
+    public static VariableBuilder builder() {
+        return new VariableBuilder();
+    }
+
+    public static class VariableBuilder {
+        private Tokens type;
         private String string;
         private int integer;
+
+        public VariableBuilder setType(Tokens type) {
+            this.type = type;
+            return this;
+        }
 
         public VariableBuilder setString(String string) {
             this.string = string;
