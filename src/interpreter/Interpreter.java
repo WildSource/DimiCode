@@ -29,14 +29,10 @@ public final class Interpreter {
         Token varConditionInt = new Token("int");
         Token varConditionString = new Token("string");
         if (tokens.contains(varConditionString)) {
-            String varName = findVarName(tokens);
-            String value = findStringValue(tokens);
-            allocateVariable(varName, Variable.builder().setType(Tokens.STRING).setString(value).build());
+            createStringVar(tokens);
         }
         if (tokens.contains(varConditionInt)) {
-            String varName = findVarName(tokens);
-            int value = findIntValue(tokens);
-            allocateVariable(varName, Variable.builder().setType(Tokens.INT).setInteger(value).build());
+            createIntVar(tokens);
         }
     }
 
@@ -60,8 +56,8 @@ public final class Interpreter {
         return Variable.builder().setInteger(result).build();
     }
 
-    private Variable getVariable(Long memoryIndex) {
-        return memory.get(memoryIndex);
+    private Variable getVariable(String varName) {
+        return memory.get(varName);
     }
 
     private void allocateVariable(String varName, Variable variable) {
@@ -78,6 +74,18 @@ public final class Interpreter {
 
     private Variable createVariable(Tokens type, int value) {
         return Variable.builder().setInteger(value).setType(type).build();
+    }
+
+    private void createStringVar(List<Token> tokens) {
+        String varName = findVarName(tokens);
+        String value = findStringValue(tokens);
+        allocateVariable(varName, createVariable(Tokens.STRING, value));
+    }
+
+    private void createIntVar(List<Token> tokens) {
+        String varName = findVarName(tokens);
+        int value = findIntValue(tokens);
+        allocateVariable(varName, createVariable(Tokens.INT, value));
     }
 
     private String findVarName(List<Token> list) {

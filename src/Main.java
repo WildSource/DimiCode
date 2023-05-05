@@ -11,10 +11,7 @@ public class Main {
         FileIntegrityChecker fileIntegrityChecker = new FileIntegrityChecker(args[0]);
         Lexer lexer = new Lexer(fileIntegrityChecker.getFile());
         List<Token> list = lexer.readSingleLine();
-        for (Token token: list ) {
-            System.out.println(token);
-        }
-        //Interpreter.interpret(list);
+        Interpreter interpreter = Interpreter.getInstance();
         System.exit(0);
     }
 }
