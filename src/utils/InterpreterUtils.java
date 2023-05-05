@@ -1,5 +1,6 @@
 package utils;
 
+import dataTypes.Variable;
 import lexer.Token;
 import tokentypes.Tokens;
 
@@ -9,6 +10,14 @@ public class InterpreterUtils {
     private static InterpreterUtils instance;
 
     private InterpreterUtils() {
+    }
+
+    public Variable createVariable(Tokens type, String value) {
+        return Variable.builder().setString(value).setType(type).build();
+    }
+
+    public Variable createVariable(Tokens type, int value) {
+        return Variable.builder().setInteger(value).setType(type).build();
     }
 
     public String findVarName(List<Token> list) {

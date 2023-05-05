@@ -72,24 +72,16 @@ public final class Interpreter {
         memory.remove(varName);
     }
 
-    private Variable createVariable(Tokens type, String value) {
-        return Variable.builder().setString(value).setType(type).build();
-    }
-
-    private Variable createVariable(Tokens type, int value) {
-        return Variable.builder().setInteger(value).setType(type).build();
-    }
-
     private void createStringVar(List<Token> tokens) {
         String varName = utils.findVarName(tokens);
         String value = utils.findStringValue(tokens);
-        allocateVariable(varName, createVariable(Tokens.STRING, value));
+        allocateVariable(varName, utils.createVariable(Tokens.STRING, value));
     }
 
     private void createIntVar(List<Token> tokens) {
         String varName = utils.findVarName(tokens);
         int value = utils.findIntValue(tokens);
-        allocateVariable(varName, createVariable(Tokens.INT, value));
+        allocateVariable(varName, utils.createVariable(Tokens.INT, value));
     }
 
 
