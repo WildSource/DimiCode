@@ -10,13 +10,16 @@ import java.util.List;
 public final class Interpreter {
     private static Interpreter instance;
 
-    private static final HashMap<Long, Variable>;
+    private static HashMap<Long, Variable> memory;
 
-    private Interpreter() {}
+    private Interpreter() {
+        memory = new HashMap<>();
+    }
 
     public static void interpret(List<Token> tokens) {
-        for (Token token: tokens) {
-            if(token.getType() == Tokens.VARIABLE) {
+
+        for (Token token : tokens) {
+            if (token.getType() == Tokens.VARIABLE) {
 
             }
         }

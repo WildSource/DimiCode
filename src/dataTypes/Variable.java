@@ -1,12 +1,24 @@
 package dataTypes;
 
+import tokentypes.Tokens;
+
 public class Variable {
+
+    private Tokens type;
     private String string;
     private int integer;
 
     private Variable(String string, int integer) {
         this.string = string;
         this.integer = integer;
+    }
+
+    public Tokens getType() {
+        return type;
+    }
+
+    public void setType(Tokens type) {
+        this.type = type;
     }
 
     public String getString() {
