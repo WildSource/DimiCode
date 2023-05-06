@@ -6,6 +6,12 @@ import tokentypes.Tokens;
 
 import java.util.List;
 
+/**
+ * @author Samuel Nguyen-Phok
+ * @version 0.0.1
+ * <p>
+ * This class holds the implementations and utility methods for the interpreter's operations
+ */
 public class InterpreterUtils {
     private static InterpreterUtils instance;
 
