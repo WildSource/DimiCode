@@ -2,7 +2,6 @@ package lexer;
 
 import tokentypes.Tokens;
 
-import java.util.Collections;
 import java.util.Objects;
 
 /**

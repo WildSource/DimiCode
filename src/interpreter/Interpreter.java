@@ -8,7 +8,13 @@ import utils.InterpreterUtils;
 import java.util.HashMap;
 import java.util.List;
 
-
+/**
+ * @author Samuel Nguyen-Phok
+ * @version 0.0.1
+ * <p>
+ * This class is the engine of the interpreter.
+ * It is the brain of the interpreter.
+ */
 public final class Interpreter {
     private static Interpreter instance;
 
