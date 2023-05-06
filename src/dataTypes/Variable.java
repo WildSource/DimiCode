@@ -13,7 +13,8 @@ public class Variable {
     private String string;
     private int integer;
 
-    private Variable(String string, int integer) {
+    private Variable(Tokens type, String string, int integer) {
+        this.type = type;
         this.string = string;
         this.integer = integer;
     }
@@ -67,7 +68,7 @@ public class Variable {
         }
 
         public Variable build() {
-            return new Variable(string, integer);
+            return new Variable(type, string, integer);
         }
     }
 }
