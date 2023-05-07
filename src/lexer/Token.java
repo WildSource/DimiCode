@@ -85,8 +85,7 @@ public class Token implements Comparable<Token> {
     @Override
     public boolean equals(Object o) {
         boolean isEquals = false;
-        if (o instanceof Token) {
-            Token token = (Token) o;
+        if (o instanceof Token token) {
             if (this.type == token.getType() && this.word.equals(token.getWord())) {
                 isEquals = true;
             }
