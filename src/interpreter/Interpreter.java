@@ -61,26 +61,6 @@ public final class Interpreter {
         }
     }
 
-    private Variable add(Variable val1, Variable val2) {
-        int result = val1.getInteger() + val2.getInteger();
-        return Variable.builder().setInteger(result).build();
-    }
-
-    private Variable subtract(Variable val1, Variable val2) {
-        int result = val1.getInteger() - val2.getInteger();
-        return Variable.builder().setInteger(result).build();
-    }
-
-    private Variable multiply(Variable val1, Variable val2) {
-        int result = val1.getInteger() * val2.getInteger();
-        return Variable.builder().setInteger(result).build();
-    }
-
-    private Variable divide(Variable val1, Variable val2) {
-        int result = val1.getInteger() / val2.getInteger();
-        return Variable.builder().setInteger(result).build();
-    }
-
     private Variable getVariable(String varName) {
         return memory.get(varName);
     }
@@ -101,8 +81,24 @@ public final class Interpreter {
 
     private void createIntVar(List<Token> tokens) {
         String varName = utils.findVarName(tokens);
-        int value = utils.findIntValue(tokens);
-        allocateVariable(varName, utils.createVariable(Tokens.INT, value));
+        boolean containsOperator = tokens.stream().anyMatch(token -> token.getType() == Tokens.OPERATOR);
+
+        if (containsOperator) {
+            Token token = utils.findOperator(tokens);
+            int value1 = utils.findIntValue(tokens);
+            int value2 = utils.findIntValue(tokens);
+            int result = 0;
+            switch (token.getWord()) {
+                case "+" -> result = value1 + value2;
+                case "-" -> result = value1 - value2;
+                case "*" -> result = value1 * value2;
+                case "/" -> result = value1 / value2;
+            }
+            allocateVariable(varName, Variable.builder().setInteger(result).setType(Tokens.INT).build());
+        } else {
+            int value = utils.findIntValue(tokens);
+            allocateVariable(varName, utils.createVariable(Tokens.INT, value));
+        }
     }
 
     public static Interpreter getInstance() {

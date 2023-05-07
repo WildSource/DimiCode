@@ -52,6 +52,9 @@ public class InterpreterUtils {
                 value = Integer.parseInt(token.getWord());
             }
         }
+        if (value != 0) {
+            list.remove(new Token(String.valueOf(value)));
+        }
         return value;
     }
 
@@ -73,6 +76,19 @@ public class InterpreterUtils {
             }
         }
         return Variable.builder().setInteger(integerValue).setString(stringValue).build();
+    }
+
+    public Token findOperator(List<Token> list) {
+        Token operatorToken = null;
+        for (Token token : list) {
+            if (token.getType() == Tokens.OPERATOR) {
+                operatorToken = token;
+            }
+        }
+        if (operatorToken == null) {
+            throw new RuntimeException("Couldn't find operator" );
+        }
+        return operatorToken;
     }
 
     public static InterpreterUtils getInstance() {
