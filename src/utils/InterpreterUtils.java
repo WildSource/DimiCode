@@ -27,13 +27,12 @@ public class InterpreterUtils {
     }
 
     public String findVarName(List<Token> list) {
-        String varName = "";
         for (Token token : list) {
             if (token.getType() == Tokens.VARIABLE) {
-                varName = token.getWord();
+                return token.getWord();
             }
         }
-        return varName;
+        return "";
     }
 
     public String findStringValue(List<Token> list) {
@@ -49,7 +48,7 @@ public class InterpreterUtils {
     public int findIntValue(List<Token> list) {
         int value = 0;
         for (Token token : list) {
-            if (token.getType() == Tokens.STRING) {
+            if (token.getType() == Tokens.INT) {
                 value = Integer.parseInt(token.getWord());
             }
         }
