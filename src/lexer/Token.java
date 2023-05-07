@@ -17,8 +17,10 @@ public class Token implements Comparable<Token> {
 
     public Token(String word) {
         attribTokenTypeToWord(word);
-        if (this.type == Tokens.STRING && word.contains("_" )) {
-            this.word = word.replace("_", " " );
+        if (this.type == Tokens.STRING && word.contains("_" ) || this.type == Tokens.STRING && word.contains("\"" )) {
+            String modifiedString;
+            modifiedString = word.replace("_", " " ).replace("\"", "" );
+            this.word = modifiedString;
         } else {
             this.word = word;
         }
