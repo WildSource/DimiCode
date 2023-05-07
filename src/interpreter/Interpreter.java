@@ -28,8 +28,8 @@ public final class Interpreter {
     }
 
     public void interpret(List<Token> tokens) {
-        Token varConditionAssign = new Token("=");
-        Token varConditionPrint = new Token("print");
+        Token varConditionAssign = new Token("=" );
+        Token varConditionPrint = new Token("print" );
 
         if (tokens.contains(varConditionAssign)) {
             assignment(tokens);
@@ -41,8 +41,8 @@ public final class Interpreter {
     }
 
     private void assignment(List<Token> tokens) {
-        Token varConditionInt = new Token("int");
-        Token varConditionString = new Token("string");
+        Token varConditionInt = new Token("int" );
+        Token varConditionString = new Token("string" );
         if (tokens.contains(varConditionString)) {
             createStringVar(tokens);
         }
@@ -53,7 +53,12 @@ public final class Interpreter {
 
     private void output(List<Token> tokens) {
         String varName = utils.findVarName(tokens);
-        System.out.println(memory.get(varName));
+        Variable value = memory.get(varName);
+        if (value.getType() == Tokens.INT) {
+            System.out.println(value.getInteger());
+        } else if (value.getType() == Tokens.STRING) {
+            System.out.println(value.getString());
+        }
     }
 
     private Variable add(Variable val1, Variable val2) {
