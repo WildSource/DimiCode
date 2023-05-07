@@ -29,9 +29,14 @@ public final class Interpreter {
 
     public void interpret(List<Token> tokens) {
         Token varConditionAssign = new Token("=");
+        Token varConditionPrint = new Token("print");
 
         if (tokens.contains(varConditionAssign)) {
             assignment(tokens);
+        }
+
+        if (tokens.contains(varConditionPrint)) {
+            output(tokens);
         }
     }
 
@@ -44,6 +49,11 @@ public final class Interpreter {
         if (tokens.contains(varConditionInt)) {
             createIntVar(tokens);
         }
+    }
+
+    private void output(List<Token> tokens) {
+
+        System.out.println();
     }
 
     private Variable add(Variable val1, Variable val2) {

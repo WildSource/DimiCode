@@ -56,6 +56,26 @@ public class InterpreterUtils {
         return value;
     }
 
+    /**
+     * Finds any value in the token list wether it is a string or a integer.
+     * As long as it is a value it will be returned
+     *
+     * @param list tokens from the lexer
+     * @return Variable object that acts as Either like in Haskell
+     */
+    public Variable findValue(List<Token> list) {
+        int integerValue = 0;
+        String stringValue = "";
+        for (Token token : list) {
+            if (token.getType() == Tokens.INT) {
+                integerValue = Integer.parseInt(token.getWord());
+            } else if (token.getType() == Tokens.STRING) {
+                stringValue = token.getWord();
+            }
+        }
+        return Variable.builder().setInteger(integerValue).setString(stringValue).build();
+    }
+
     public static InterpreterUtils getInstance() {
         if (instance == null) {
             instance = new InterpreterUtils();
