@@ -34,7 +34,7 @@ public class Token implements Comparable<Token> {
             switch (word) {
                 case "string" -> this.type = Tokens.STRING;
                 case "int" -> this.type = Tokens.INT;
-                case "if", "while", "else" -> this.type = Tokens.KEYWORD;
+                case "if", "while", "else", "print" -> this.type = Tokens.KEYWORD;
                 case "+", "*", "-", "/", "=", "<", ">" -> this.type = Tokens.OPERATOR;
                 default -> this.type = Tokens.VARIABLE;
             }
