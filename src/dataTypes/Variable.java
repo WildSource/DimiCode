@@ -71,4 +71,13 @@ public class Variable {
             return new Variable(type, string, integer);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Variable{" +
+                "type=" + type +
+                ", string='" + string + '\'' +
+                ", integer=" + integer +
+                '}';
+    }
 }

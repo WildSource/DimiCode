@@ -37,6 +37,10 @@ public class Lexer {
         return tokenList;
     }
 
+    public boolean hasNextLine() {
+        return reader.hasNextLine();
+    }
+
     public File getFile() {
         return file;
     }

@@ -5,7 +5,6 @@ import lexer.Token;
 import tokentypes.Tokens;
 import utils.InterpreterUtils;
 
-import javax.swing.text.Utilities;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,8 +52,8 @@ public final class Interpreter {
     }
 
     private void output(List<Token> tokens) {
-        Variable value = utils.findValue(tokens);
-        System.out.println(value);
+        String varName = utils.findVarName(tokens);
+        System.out.println(memory.get(varName));
     }
 
     private Variable add(Variable val1, Variable val2) {

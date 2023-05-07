@@ -65,7 +65,7 @@ public class InterpreterUtils {
      */
     public Variable findValue(List<Token> list) {
         int integerValue = 0;
-        String stringValue = "";
+        String stringValue = "String value not found";
         for (Token token : list) {
             if (token.getType() == Tokens.INT) {
                 integerValue = Integer.parseInt(token.getWord());

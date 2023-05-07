@@ -7,11 +7,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        Interpreter interpreter = Interpreter.getInstance();
         FileIntegrityChecker fileIntegrityChecker = new FileIntegrityChecker(args[0]);
         Lexer lexer = new Lexer(fileIntegrityChecker.getFile());
-        List<Token> list = lexer.readSingleLine();
-        Interpreter interpreter = Interpreter.getInstance();
-        interpreter.interpret(list);
+
+        while (lexer.hasNextLine()) {
+            List<Token> list = lexer.readSingleLine();
+            interpreter.interpret(list);
+        }
+
         System.exit(0);
     }
 }
