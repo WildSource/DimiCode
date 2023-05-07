@@ -16,17 +16,21 @@ public class Token implements Comparable<Token> {
     private Tokens type;
 
     public Token(String word) {
-        this.word = word;
         attribTokenTypeToWord(word);
+        if (this.type == Tokens.STRING && word.contains("_" )) {
+            this.word = word.replace("_", " " );
+        } else {
+            this.word = word;
+        }
     }
 
     private void attribTokenTypeToWord(String word) {
         // Check if the word matches the pattern of a number
-        if (word.matches("-?\\d+(\\.\\d+)?")) {
+        if (word.matches("-?\\d+(\\.\\d+)?" )) {
             this.type = Tokens.INT;
         }
         // Check if the word matches the pattern of a string
-        else if (word.matches("\".*\"")) {
+        else if (word.matches("\".*\"" )) {
             this.type = Tokens.STRING;
         }
         // Check if the word is a keyword, operator, or punctuation
